@@ -28,7 +28,7 @@ import TextInput from '@/Shared/TextInput'
 import SelectInput from '@/Shared/SelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
 import TrashedMessage from '@/Shared/TrashedMessage'
-// import { tools } from '@/common/tools'
+import { tools } from '@/Helpers/tools.js'
 
 export default {
   components: {
@@ -36,6 +36,7 @@ export default {
     Link,
     LoadingButton,
     SelectInput,
+    // Sample usage of toolt.js
     TextInput,
     TrashedMessage,
   },
@@ -52,7 +53,8 @@ export default {
     }
   },
   mounted() {
-    // console.log(tools.toSlug(this.medicine))
+    // Sample usage of tools.js
+    console.log(tools.toSlug(this.medicine.name))
   },
   methods: {
     update() {
