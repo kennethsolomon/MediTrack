@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImagesController;
+use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UsersController;
@@ -37,6 +38,30 @@ Route::delete('logout', [AuthenticatedSessionController::class, 'destroy'])
 
 Route::get('/', [DashboardController::class, 'index'])
     ->name('dashboard')
+    ->middleware('auth');
+
+// Medicines
+
+Route::get('/medicines', [MedicineController::class, 'index'])
+    ->name('medicines')
+    ->middleware('auth');
+Route::get('medicines/create', [MedicineController::class, 'create'])
+    ->name('medicines.create')
+    ->middleware('auth');
+Route::post('medicines', [MedicineController::class, 'store'])
+    ->name('medicines.store')
+    ->middleware('auth');
+Route::get('medicines/{medicine}/edit', [MedicineController::class, 'edit'])
+    ->name('medicines.edit')
+    ->middleware('auth');
+Route::put('medicines/{medicine}', [MedicineController::class, 'update'])
+    ->name('medicines.update')
+    ->middleware('auth');
+Route::delete('medicines/{medicine}', [MedicineController::class, 'destroy'])
+    ->name('medicines.destroy')
+    ->middleware('auth');
+Route::put('medicines/{medicine}/restore', [MedicineController::class, 'restore'])
+    ->name('medicines.restore')
     ->middleware('auth');
 
 // Users
