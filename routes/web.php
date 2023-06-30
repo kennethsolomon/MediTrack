@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrequencyController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrganizationsController;
@@ -62,6 +63,30 @@ Route::delete('medicines/{medicine}', [MedicineController::class, 'destroy'])
     ->middleware('auth');
 Route::put('medicines/{medicine}/restore', [MedicineController::class, 'restore'])
     ->name('medicines.restore')
+    ->middleware('auth');
+
+// Frequencies
+
+Route::get('/frequencies', [FrequencyController::class, 'index'])
+    ->name('frequencies')
+    ->middleware('auth');
+Route::get('frequencies/create', [FrequencyController::class, 'create'])
+    ->name('frequencies.create')
+    ->middleware('auth');
+Route::post('frequencies', [FrequencyController::class, 'store'])
+    ->name('frequencies.store')
+    ->middleware('auth');
+Route::get('frequencies/{frequency}/edit', [FrequencyController::class, 'edit'])
+    ->name('frequencies.edit')
+    ->middleware('auth');
+Route::put('frequencies/{frequency}', [FrequencyController::class, 'update'])
+    ->name('frequencies.update')
+    ->middleware('auth');
+Route::delete('frequencies/{frequency}', [FrequencyController::class, 'destroy'])
+    ->name('frequencies.destroy')
+    ->middleware('auth');
+Route::put('frequencies/{frequency}/restore', [FrequencyController::class, 'restore'])
+    ->name('frequencies.restore')
     ->middleware('auth');
 
 // Users
