@@ -48,13 +48,13 @@ class MedicineController extends Controller
      */
     public function store(Request $request)
     {
-        Medicine::create(
+        $medicine = Medicine::create(
             Request::validate([
                 'name' => ['required', 'max:522'],
             ])
         );
 
-        return back()->with('success', 'Medicine created.');
+        return back()->with('success', $medicine->name . ' medicine created.');
     }
 
     /**

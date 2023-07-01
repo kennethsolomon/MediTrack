@@ -48,13 +48,13 @@ class FrequencyController extends Controller
      */
     public function store(Request $request)
     {
-        Frequency::create(
+        $frequency = Frequency::create(
             Request::validate([
                 'name' => ['required', 'max:522'],
             ])
         );
 
-        return back()->with('success', 'Frequency created.');
+        return back()->with('success', $frequency->name . ' frequency created.');
     }
 
     /**
