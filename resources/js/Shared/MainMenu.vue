@@ -7,6 +7,12 @@
       </Link>
     </div>
     <div class="mb-4">
+      <Link class="group flex items-center py-3" href="/patients">
+        <icon name="patients" class="mr-2 w-4 h-4" :class="isUrl('patients') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
+        <div :class="isUrl('patients') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Patients</div>
+      </Link>
+    </div>
+    <div class="mb-4">
       <Link class="group flex items-center py-3" href="/medicines">
         <icon name="medicines" class="mr-2 w-4 h-4" :class="isUrl('medicines') ? 'fill-white' : 'fill-indigo-400 group-hover:fill-white'" />
         <div :class="isUrl('medicines') ? 'text-white' : 'text-indigo-300 group-hover:text-white'">Medicines</div>

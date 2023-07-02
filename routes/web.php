@@ -7,6 +7,7 @@ use App\Http\Controllers\FrequencyController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\MedicineController;
 use App\Http\Controllers\OrganizationsController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -87,6 +88,15 @@ Route::delete('frequencies/{frequency}', [FrequencyController::class, 'destroy']
     ->middleware('auth');
 Route::put('frequencies/{frequency}/restore', [FrequencyController::class, 'restore'])
     ->name('frequencies.restore')
+    ->middleware('auth');
+
+// Patients
+
+Route::get('/patients', [PatientController::class, 'index'])
+    ->name('patients')
+    ->middleware('auth');
+Route::get('patients/create', [PatientController::class, 'create'])
+    ->name('patients.create')
     ->middleware('auth');
 
 // Users
