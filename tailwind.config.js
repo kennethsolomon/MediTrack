@@ -2,11 +2,13 @@ const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: [
-    // prettier-ignore
+  content: [
     './resources/**/*.blade.php',
     './resources/**/*.js',
     './resources/**/*.vue',
+    // './index.html',
+    // './resources/**/*.{vue,js,ts,jsx,tsx}',
+    './node_modules/vue-tailwind-datepicker/**/*.js',
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -19,7 +21,7 @@ module.exports = {
       orange: colors.orange,
       yellow: colors.yellow,
       green: colors.green,
-      gray: colors.blueGray,
+      gray: colors.slate,
       indigo: {
         100: '#e6e8ff',
         300: '#b2b7ff',
@@ -31,6 +33,10 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        'vtd-primary': colors.sky, // Light mode Datepicker color
+        'vtd-secondary': colors.gray, // Dark mode Datepicker color
+      },
       borderColor: theme => ({
         DEFAULT: theme('colors.gray.200', 'currentColor'),
       }),
@@ -43,10 +49,7 @@ module.exports = {
       fill: theme => theme('colors'),
     },
   },
-  variants: {
-    extend: {
-      fill: ['focus', 'group-hover'],
-    },
-  },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
