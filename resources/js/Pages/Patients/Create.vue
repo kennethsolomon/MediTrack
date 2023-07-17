@@ -20,8 +20,10 @@
           </select-input>
           <text-input v-model="form.address" :error="form.errors.address" class="pb-8 pr-6 w-full lg:w-1/2" label="Address" />
           <date-picker v-model="form.birth_date" label="Birthdate" class="pb-8 pr-6 w-full lg:w-1/2" />
-
-          // Age counter; reactive live count for age
+          <div class="pb-8 pr-6 w-full lg:w-1/2">
+            <label class="form-label" for="age">Age:</label>
+            <input id="age" v-model="form.age" disabled class="form-input" />
+          </div>
           <text-input v-model="form.place_of_birth" :error="form.errors.place_of_birth" class="pb-8 pr-6 w-full lg:w-1/2" label="Place of birth" />
           <text-input v-model="form.region" :error="form.errors.region" class="pb-8 pr-6 w-full lg:w-1/2" label="Region" />
           <text-input v-model="form.nationality" :error="form.errors.nationality" class="pb-8 pr-6 w-full lg:w-1/2" label="Nationality" />
@@ -34,7 +36,6 @@
       </form>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -65,8 +66,8 @@ export default {
         suffix_name: null,
         gender: null,
         address: null,
-        birth_date: null,
-        age: null,
+        birth_date: [],
+        age: 0,
         place_of_birth: null,
         region: null,
         nationality: null,
@@ -74,6 +75,20 @@ export default {
         status: null, // automatic to Active in the backend
       }),
     }
+  },
+  watch:{
+    'form.birth_date': function (newVal, oldVal){
+      if(newVal != null){
+        var today = new Date()
+        var birthDate = new Date(newVal)
+        var age = today.getFullYear() - birthDate.getFullYear()
+        var m = today.getMonth() - birthDate.getMonth()
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--
+        }
+        this.form.age = age
+      }
+    },
   },
   methods: {
     store() {
