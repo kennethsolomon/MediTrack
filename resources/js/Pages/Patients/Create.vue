@@ -5,7 +5,7 @@
       <Link class="text-indigo-400 hover:text-indigo-600" href="/patients">Patients</Link>
       <span class="text-indigo-400 font-medium">/</span> Create
     </h1>
-    <div class="max-w-3xl bg-white rounded-md shadow overflow-hidden">
+    <div class="max-w-3xl bg-white rounded-md shadow ">
       <form @submit.prevent="store">
         <div class="flex flex-wrap -mb-8 -mr-6 p-8">
           <text-input v-model="form.first_name" :error="form.errors.first_name" class="pb-8 pr-6 w-full lg:w-1/2" label="First Name" />
@@ -19,7 +19,7 @@
             <option value="Female">Others</option>
           </select-input>
           <text-input v-model="form.address" :error="form.errors.address" class="pb-8 pr-6 w-full lg:w-1/2" label="Address" />
-          // Birthdate
+          <date-picker v-model="form.birth_date" label="Birthdate" class="pb-8 pr-6 w-full lg:w-1/2" />
 
           // Age counter; reactive live count for age
           <text-input v-model="form.place_of_birth" :error="form.errors.place_of_birth" class="pb-8 pr-6 w-full lg:w-1/2" label="Place of birth" />
@@ -43,6 +43,7 @@ import Layout from '@/Shared/Layout'
 import TextInput from '@/Shared/TextInput'
 import SelectInput from '@/Shared/SelectInput'
 import LoadingButton from '@/Shared/LoadingButton'
+import DatePicker from '@/Shared/DatePicker.vue'
 
 export default {
   components: {
@@ -51,6 +52,7 @@ export default {
     LoadingButton,
     SelectInput,
     TextInput,
+    DatePicker,
   },
   layout: Layout,
   remember: 'form',

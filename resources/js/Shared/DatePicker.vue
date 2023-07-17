@@ -24,7 +24,7 @@ export default {
     },
     error: String,
     label: String,
-    modelValue: Array,
+    modelValue: [Array, String],
     formatter: {
       type: Object,
       default() {
@@ -43,7 +43,7 @@ export default {
   },
   watch: {
     selected(selected) {
-      this.$emit('update:modelValue', selected)
+      this.$emit('update:modelValue', selected.toString())
     },
   },
 }
