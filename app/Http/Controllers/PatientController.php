@@ -52,7 +52,25 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $patient = Patient::create(
+            Request::validate([
+                'first_name' => ['required', 'max:522'],
+                'last_name' => ['required', 'max:522'],
+                'middle_name' => ['sometimes', 'max:522'],
+                'suffix_name' => ['sometimes', 'max:522'],
+                'gender' => ['required', 'max:522'],
+                'address' => ['required', 'max:522'],
+                'birth_date' => ['required', 'max:522'],
+                'place_of_birth' => ['required', 'max:522'],
+                'religion' => ['required', 'max:522'],
+                'nationality' => ['required', 'max:522'],
+                'civil_status' => ['required', 'max:522'],
+
+                // 'user_id' => 'required|exists:App\Models\User,id',
+            ]) + ['user_id' => auth()->id()]
+        );
+
+        return back()->with('success', $patient->first_name . ' ' . $patient->last_name . ' patient created.');
     }
 
     /**

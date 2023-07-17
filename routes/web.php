@@ -98,6 +98,9 @@ Route::get('/patients', [PatientController::class, 'index'])
 Route::get('patients/create', [PatientController::class, 'create'])
     ->name('patients.create')
     ->middleware('auth');
+Route::post('patients', [PatientController::class, 'store'])
+    ->name('patients.store')
+    ->middleware('auth');
 
 // Users
 

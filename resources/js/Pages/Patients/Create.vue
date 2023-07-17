@@ -25,8 +25,9 @@
             <input id="age" v-model="form.age" disabled class="form-input" />
           </div>
           <text-input v-model="form.place_of_birth" :error="form.errors.place_of_birth" class="pb-8 pr-6 w-full lg:w-1/2" label="Place of birth" />
-          <text-input v-model="form.region" :error="form.errors.region" class="pb-8 pr-6 w-full lg:w-1/2" label="Region" />
+          <text-input v-model="form.religion" :error="form.errors.religion" class="pb-8 pr-6 w-full lg:w-1/2" label="Religion" />
           <text-input v-model="form.nationality" :error="form.errors.nationality" class="pb-8 pr-6 w-full lg:w-1/2" label="Nationality" />
+            <text-input v-model="form.civil_status" :error="form.errors.civil_status" class="pb-8 pr-6 w-full lg:w-1/2" label="Civil Status" />
           // Avatar
           // Status default to active No need to add just for reference
         </div>
@@ -69,8 +70,9 @@ export default {
         birth_date: [],
         age: 0,
         place_of_birth: null,
-        region: null,
+        religion: null,
         nationality: null,
+        civil_status: null,
         avatar: null, // confirm if need to be deleted
         status: null, // automatic to Active in the backend
       }),

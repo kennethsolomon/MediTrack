@@ -17,17 +17,16 @@ return new class extends Migration
             $table->id();
             $table->string('last_name');
             $table->string('first_name');
-            $table->string('middle_name');
-            $table->string('suffix_name');
+            $table->string('middle_name')->nullable();
+            $table->string('suffix_name')->nullable();
             $table->string('gender');
-            $table->dateTime('birthdate');
+            $table->dateTime('birth_date');
             $table->text('address');
-            $table->integer('age');
             $table->text('place_of_birth');
             $table->string('civil_status');
             $table->string('religion');
             $table->string('nationality');
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->string('status')->default('Active');
             $table->timestamps();
 
