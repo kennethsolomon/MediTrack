@@ -93,8 +93,10 @@ export default {
     },
   },
   methods: {
-    store() {
-      this.form.post('/patients')
+    async store() {
+      await this.form.post('/patients', {
+        onSuccess: () => this.form.reset(),
+      })
     },
   },
 }

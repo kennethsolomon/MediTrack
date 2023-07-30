@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 
@@ -24,10 +25,20 @@ class PatientController extends Controller
                 ->withQueryString()
                 ->through(fn ($patient) => [
                     'id' => $patient->id,
-                    'name' => $patient->name,
+                    'name' => $patient->first_name . ', ' . $patient->last_name . ', ' . $patient->middle_name . ' ' . $patient->suffix_name,
+                    'first_name' => $patient->first_name,
+                    'middle_name' => $patient->middle_name,
+                    'last_name' => $patient->last_name,
+                    'suffix_name' => $patient->suffix_name,
                     'gender' => $patient->gender,
-                    'birthdate' => $patient->birthdate,
+                    'birth_date' => Carbon::parse($patient->birth_date)->format('Y-m-d'),
+                    'age' => Carbon::parse($patient->birth_date)->age,
                     'address' => $patient->address,
+                    'place_of_birth' => $patient->place_of_birth,
+                    'civil_status' => $patient->civil_status,
+                    'religion' => $patient->religion,
+                    'nationality' => $patient->nationality,
+                    'avatar' => $patient->avatar,
                     'status' => $patient->status,
                     'deleted_at' => $patient->deleted_at,
                 ]),

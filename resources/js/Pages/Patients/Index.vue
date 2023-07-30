@@ -20,11 +20,40 @@
       <table class="w-full whitespace-nowrap">
         <tr class="text-left font-bold">
           <th class="pb-4 pt-6 px-6">Name</th>
+          <th class="pb-4 pt-6 px-6">Gender</th>
+          <th class="pb-4 pt-6 px-6">Birth Date</th>
+          <th class="pb-4 pt-6 px-6">Age</th>
+          <th class="pb-4 pt-6 px-6">Address</th>
+          <td></td>
         </tr>
         <tr v-for="patient in patients.data" :key="patient.id" class="hover:bg-gray-100 focus-within:bg-gray-100">
           <td class="border-t">
             <Link class="flex items-center px-6 py-4 focus:text-indigo-500" :href="`/patients/${patient.id}/edit`">
               {{ patient.name }}
+              <icon v-if="patient.deleted_at" name="trash" class="flex-shrink-0 ml-2 w-3 h-3 fill-gray-400" />
+            </Link>
+          </td>
+          <td class="border-t">
+            <Link class="flex items-center px-6 py-4 focus:text-indigo-500" :href="`/patients/${patient.id}/edit`">
+              {{ patient.gender }}
+              <icon v-if="patient.deleted_at" name="trash" class="flex-shrink-0 ml-2 w-3 h-3 fill-gray-400" />
+            </Link>
+          </td>
+          <td class="border-t">
+            <Link class="flex items-center px-6 py-4 focus:text-indigo-500" :href="`/patients/${patient.id}/edit`">
+              {{ patient.birth_date }}
+              <icon v-if="patient.deleted_at" name="trash" class="flex-shrink-0 ml-2 w-3 h-3 fill-gray-400" />
+            </Link>
+          </td>
+          <td class="border-t">
+            <Link class="flex items-center px-6 py-4 focus:text-indigo-500" :href="`/patients/${patient.id}/edit`">
+              {{ patient.age }}
+              <icon v-if="patient.deleted_at" name="trash" class="flex-shrink-0 ml-2 w-3 h-3 fill-gray-400" />
+            </Link>
+          </td>
+          <td class="border-t">
+            <Link class="flex items-center px-6 py-4 focus:text-indigo-500" :href="`/patients/${patient.id}/edit`">
+              {{ patient.address }}
               <icon v-if="patient.deleted_at" name="trash" class="flex-shrink-0 ml-2 w-3 h-3 fill-gray-400" />
             </Link>
           </td>
